@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Subject:</b>
+  <%= @activity.subject %>
+</p>
+
+<p>
+  <b>Label:</b>
+  <%= @activity.label %>
+</p>
+
+<p>
+  <b>Generated:</b>
+
+  <% @activity.generated.each do |entity| %>
+  <td><%= link_to(entity, entity.as(Entity)) %></td>
+  <% end %>
+
+</p>
+
+<p>
+  <b>Used:</b>
+  <%= @activity.used %>
+</p>
+
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

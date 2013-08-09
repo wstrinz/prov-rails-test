@@ -1,0 +1,17 @@
+<h2>Repository#query</h1>
+<br>
+  <p> Query: <%= @query %></p>
+<br>
+<table>
+  <% @response.first.keys.map do |k| %>
+  <th><%= k %></th>
+  <% end %>
+
+  <% @response.map do |sol| %>
+  <tr>
+    <% sol.values.map do |v| %>
+    <td><%= v %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
