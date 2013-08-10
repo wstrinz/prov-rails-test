@@ -8,8 +8,8 @@ ProvRails::Application.routes.draw do
 
   # get 'entities/*id', to: 'entities#show' #, id: %r{http://.+/.+}
   # get 'activities/*id', to: 'activities#show' #, id: %r{http://.+/.+}
-  resources :activities
-  resources :entities
+  # resources :activities
+  # resources :entities
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -17,14 +17,19 @@
     <td><%= activity.label %></td>
     <td>
     <% activity.generated.each do |entity| %>
-    <%= link_to(entity, entity.as(Entity)) %>
-    <% end %>
+    <%= link_to(entity, entity_path(entity.to_s)) %>
     ,
+    <% end %>
     </td>
-    <td><%= activity.used %></td>
-    <td><%= link_to 'Show', activity_path_rdf(activity) %></td>
+    <td>
+    <% activity.used.each do |entity| %>
+    <%= link_to(entity, entity_path(entity.to_s)) %>
+    ,
+    <% end %>
+    </td>
+    <td><%= link_to 'Show', activity %></td>
 
-    <td><%= link_to 'Edit', edit_activity_path_rdf(activity) %></td>
+    <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
     <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

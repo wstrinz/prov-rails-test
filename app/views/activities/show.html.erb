@@ -14,14 +14,16 @@
   <b>Generated:</b>
 
   <% @activity.generated.each do |entity| %>
-  <td><%= link_to(entity, entity.as(Entity)) %></td>
+  <td><%= link_to(entity, entity_path(entity.to_s[7..-1])) %></td>
   <% end %>
 
 </p>
 
 <p>
   <b>Used:</b>
-  <%= @activity.used %>
+  <% @activity.used.each do |entity| %>
+  <td><%= link_to(entity, entity_path(entity.to_s[7..-1])) %></td>
+  <% end %>
 </p>
 
 

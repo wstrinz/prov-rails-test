@@ -24,7 +24,7 @@ class EntitiesController < ApplicationController
   # GET /entities/new
   # GET /entities/new.json
   def new
-    @entity = RDF::URI('http://example.org/').as(Entity)
+    @entity = RDF::URI("http://example.org/entity/#{Time.now.nsec.to_s(32)}").as(Entity)
 
     respond_to do |format|
       format.html # new.html.erb

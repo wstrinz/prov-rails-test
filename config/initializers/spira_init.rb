@@ -1,3 +1,11 @@
+module Spira
+  class Base
+    def id
+      new_record? ? nil : subject.to_s.gsub('http://','') #path.split(/\//).last
+    end
+  end
+end
+
 ev = PubliSci::Prov::DSL::Instance.new
 # include PubliSci::Prov::DSL
 r = RDF::FourStore::Repository.new('http://localhost:8080/')

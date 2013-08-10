@@ -13,7 +13,7 @@
 <% @entities.each do |entity| %>
   <tr>
     <td><%= entity.subject %></td>
-    <td><%= link_to(entity.wasGeneratedBy.to_s, "/activities/#{entity.wasGeneratedBy.to_s[7..-1]}") if entity.wasGeneratedBy %></td>
+    <td><%= link_to(entity.wasGeneratedBy.to_s, "/activities/#{entity.wasGeneratedBy.to_s}") if entity.wasGeneratedBy %></td>
     <td><%= link_to(entity.wasDerivedFrom.first.to_s, entity.wasDerivedFrom.first.as(Entity)) if entity.wasDerivedFrom.first %></td>
 
     <td><%= link_to 'Show', entity_path(entity.subject.to_s[7..-1]) %></td>
