@@ -2,6 +2,7 @@ require 'rdf_routes_helper'
 ProvRails::Application.routes.draw do
   get "repository/query"
   get "repository", to: 'repository#index'
+
   rdf_resources :entities
   rdf_resources :activities
 
