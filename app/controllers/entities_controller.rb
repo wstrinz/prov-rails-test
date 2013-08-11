@@ -2,7 +2,6 @@ class EntitiesController < ApplicationController
   # GET /entities
   # GET /entities.json
   def index
-    headers['Access-Control-Allow-Origin'] = "*"
     @entities = Entity.all
 
     respond_to do |format|

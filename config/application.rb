@@ -42,11 +42,21 @@ module ProvRails
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
 
-    config.middleware.use Rack::Cors do
+   config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors", :debug => true, :logger => Rails.logger do
       allow do
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
-      end
+
+        resource '/cors',
+          :headers => :any,
+          :methods => [:post],
+          :credentials => true,
+          :max_age => 0
+
+        resource '*',
+          :headers => :any,
+          :methods => [:get, :post, :delete, :put, :options],
+          :max_age => 0
+        end
     end
 
     # Use SQL instead of Active Record's schema dumper when creating the database.
