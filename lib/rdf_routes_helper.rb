@@ -11,13 +11,6 @@ class ActionDispatch::Routing::Mapper
         get "#{r}/*id", to: "#{r}#show", as: r.to_s.singularize.to_sym #, id: /http:\/.+/
         put "#{r}/*id", to: "#{r}#update" #, as: r.to_s.singularize.to_sym
         delete "#{r}/*id", to: "#{r}#destroy" #, as: r.to_s.singularize.to_sym
-        # resources r do
-        #   member do
-        #     get 'new_file'
-        #     post 'add_file'
-        #     delete 'files' => :destroy_file
-        #   end
-        # end
       end
     end
   end

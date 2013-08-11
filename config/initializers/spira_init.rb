@@ -7,8 +7,10 @@ module Spira
 end
 
 ev = PubliSci::Prov::DSL::Instance.new
+str = IO.read(File.dirname(__FILE__) + "/primer-full.prov")
+r = ev.instance_eval(str,File.dirname(__FILE__) + "/primer-full.prov")
 # include PubliSci::Prov::DSL
-r = RDF::FourStore::Repository.new('http://localhost:8080/')
+# r = RDF::FourStore::Repository.new('http://localhost:8080/')
 # r = ev.instance_eval do
 #   configure do |config|
 #     config.repository :fourstore
