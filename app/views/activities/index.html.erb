@@ -2,10 +2,11 @@
 
 <table>
   <tr>
-    <th>Subject</th>
     <th>Label</th>
+    <th>Subject</th>
     <th>Generated</th>
     <th>Used</th>
+    <th>Associated With</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,17 +14,23 @@
 
 <% @activities.each do |activity| %>
   <tr>
+    <td><strong><%= activity.label %></strong></td>
     <td><%= activity.subject %></td>
-    <td><%= activity.label %></td>
     <td>
     <% activity.generated.each do |entity| %>
-    <%= link_to(entity, entity_path(entity.to_s)) %>
+    <%= link_to(entity.as(Entity).label || entity, entity.as(Entity)) %>
     ,
     <% end %>
     </td>
     <td>
     <% activity.used.each do |entity| %>
-    <%= link_to(entity, entity_path(entity.to_s)) %>
+    <%= link_to(entity.as(Entity).label || entity, entity.as(Entity)) %>
+    ,
+    <% end %>
+    </td>
+    <td>
+    <% activity.wasAssociatedWith.each do |agent| %>
+    <%= link_to(agent.as(Agent).label || agent, agent.as(Agent)) %>
     ,
     <% end %>
     </td>

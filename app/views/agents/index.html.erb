@@ -13,9 +13,9 @@
 <% @agents.each do |agent| %>
   <tr>
     <td>
-    <%if agent.actedOnBehalfOf%>
+    <% if agent.actedOnBehalfOf %>
       <%= link_to (agent.actedOnBehalfOf.as(Agent).label || agent.actedOnBehalfOf), agent.actedOnBehalfOf.as(Agent)%></td>
-    <%end%>
+    <% end %>
     </td>
     <td><%= agent.label %></td>
     <td><%= agent.name %></td>
