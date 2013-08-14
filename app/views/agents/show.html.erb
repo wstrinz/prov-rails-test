@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Actedonbehalfof:</b>
+  <%= @agent.actedOnBehalfOf %>
+</p>
+
+<p>
+  <b>Label:</b>
+  <%= @agent.label %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @agent.name %>
+</p>
+
+<p>
+  <b>Activities:</b>
+  <% @agent.activities.each do |act| %>
+  <%= link_to (act.label || act.subject), activity_path(act) %>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_agent_path(@agent) %> |
+<%= link_to 'Back', agents_path %>

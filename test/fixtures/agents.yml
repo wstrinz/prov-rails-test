@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  actedOnBehalfOf: MyString
+  label: MyString
+  name: MyString
+
+two:
+  actedOnBehalfOf: MyString
+  label: MyString
+  name: MyString
