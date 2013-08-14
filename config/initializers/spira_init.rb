@@ -6,7 +6,7 @@ module Spira
   end
 end
 
-ev = PubliSci::Prov::DSL::Instance.new
+ev = PubliSci::DSL::Instance.new
 str = IO.read(File.dirname(__FILE__) + "/primer-full.prov")
 r = ev.instance_eval(str,File.dirname(__FILE__) + "/primer-full.prov")
 # include PubliSci::Prov::DSL
