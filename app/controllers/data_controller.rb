@@ -28,14 +28,14 @@ class DataController < ApplicationController
       @data = value.first.to_s
     end
 
-    if output_format == :csv
+    if output_format == 'csv'
       writer = PubliSci::Writer::CSV.new
-      @data =
-    elsif output_format == :ttl
+      @data = writer.from_store(Spira.repositories[:default],'http://' + id)
+    elsif output_format == 'ttl'
       raise "Turtle output not implemented"
     else
+      raise "UnkownFormat #{output_format}, #{output_format.class}"
     end
-
     # maybe check if the entity is a named graph and do something about that
     #
     # otherwise maybe dereference url? Other representation methods?
