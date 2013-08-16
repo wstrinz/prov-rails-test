@@ -44,6 +44,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    commonjs (0.2.6)
     ebnf (0.3.1)
       rdf
       sxp
@@ -58,6 +59,11 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.0)
     json_pure (1.8.0)
+    less (2.3.2)
+      commonjs (~> 0.2.6)
+    less-rails (2.3.3)
+      actionpack (>= 3.1)
+      less (~> 2.3.1)
     libv8 (3.11.8.17)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -156,6 +162,11 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.2.8)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
     twitter-bootstrap-rails-cdn (1.0.6)
     tzinfo (0.3.37)
     uglifier (2.1.2)
@@ -169,11 +180,13 @@ DEPENDENCIES
   bio-publisci
   coffee-rails (~> 3.2.1)
   jquery-rails
+  less-rails
   rack-cors
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   spira
   sqlite3
   therubyracer
+  twitter-bootstrap-rails
   twitter-bootstrap-rails-cdn
   uglifier (>= 1.0.3)

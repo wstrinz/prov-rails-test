@@ -11,13 +11,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806152801) do
+ActiveRecord::Schema.define(:version => 20130816183312) do
+
+  create_table "activities", :force => true do |t|
+    t.string   "subject"
+    t.string   "label"
+    t.string   "generated"
+    t.string   "used"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "agents", :force => true do |t|
+    t.string   "actedOnBehalfOf"
+    t.string   "label"
+    t.string   "name"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "associations", :force => true do |t|
+    t.string   "label"
+    t.string   "agent"
+    t.string   "hadPlan"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "entities", :force => true do |t|
     t.string   "subject"
     t.string   "wasGeneratedBy"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "plans", :force => true do |t|
+    t.string   "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
