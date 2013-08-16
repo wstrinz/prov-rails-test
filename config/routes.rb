@@ -1,5 +1,8 @@
 require 'rdf_routes_helper'
 ProvRails::Application.routes.draw do
+  resources :associations
+
+
   resources :plans
 
 

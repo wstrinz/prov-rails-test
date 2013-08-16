@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Label:</b>
+  <%= @association.label %>
+</p>
+
+<p>
+  <b>Agent:</b>
+  <%= @association.agent %>
+</p>
+
+<p>
+  <b>Hadplan:</b>
+  <%= @association.hadPlan %>
+</p>
+
+
+<%= link_to 'Edit', edit_association_path(@association) %> |
+<%= link_to 'Back', associations_path %>

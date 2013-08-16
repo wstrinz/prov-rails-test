@@ -1,0 +1,29 @@
+<%= form_for(@association) do |f| %>
+  <% if @association.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@association.errors.count, "error") %> prohibited this association from being saved:</h2>
+
+      <ul>
+      <% @association.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :label %><br />
+    <%= f.text_field :label %>
+  </div>
+  <div class="field">
+    <%= f.label :agent %><br />
+    <%= f.text_field :agent %>
+  </div>
+  <div class="field">
+    <%= f.label :hadPlan %><br />
+    <%= f.text_field :hadPlan %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
