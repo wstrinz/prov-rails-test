@@ -31,6 +31,9 @@ class DataController < ApplicationController
     if output_format == 'csv'
       writer = PubliSci::Writer::CSV.new
       @data = writer.from_store(Spira.repositories[:default],'http://' + id)
+    elsif output_format == 'arff'
+      writer = PubliSci::Writer::ARFF.new
+      @data = writer.from_store(Spira.repositories[:default],'http://' + id)
     elsif output_format == 'ttl'
       raise "Turtle output not implemented"
     else

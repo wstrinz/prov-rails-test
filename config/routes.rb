@@ -1,5 +1,8 @@
 require 'rdf_routes_helper'
 ProvRails::Application.routes.draw do
+  resources :plans
+
+
   get "data/*id", to: 'data#dataset'
   get "data/metadata/*id", to: 'data#metadata'
 
