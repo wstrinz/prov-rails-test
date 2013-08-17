@@ -16,7 +16,7 @@
         <td><%= link_to entity.id, entity_path(entity) %></td>
         <td>
         <% if entity.wasGeneratedBy %>
-        <%= link_to entity.wasGeneratedBy, activity_path(entity.wasGeneratedBy.as(Activity)) %>
+        <%= link_to (entity.wasGeneratedBy.as(Activity).label || entity.wasGeneratedBy), activity_path(entity.wasGeneratedBy.as(Activity)) %>
         <% end %>
         </td>
         <td>

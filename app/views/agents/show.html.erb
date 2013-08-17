@@ -1,27 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Agent -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <b>Actedonbehalfof:</b>
-  <%= @agent.actedOnBehalfOf %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:subject) %>:</strong></dt>
+  <dd><%= @agent.subject %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:actedOnBehalfOf) %>:</strong></dt>
+  <dd><%= @agent.actedOnBehalfOf %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:label) %>:</strong></dt>
+  <dd><%= @agent.label %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @agent.name %></dd>
+  <dt><strong>Activities</strong></dt>
+  <dd>
+    <% @agent.activities.each do |act| %>
+    <%= link_to (act.label || act.subject), activity_path(act) %>
+    ,
+    <% end %>
+  </dt>
+</dl>
 
-<p>
-  <b>Label:</b>
-  <%= @agent.label %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @agent.name %>
-</p>
-
-<p>
-  <b>Activities:</b>
-  <% @agent.activities.each do |act| %>
-  <%= link_to (act.label || act.subject), activity_path(act) %>
-  <% end %>
-</p>
-
-
-<%= link_to 'Edit', edit_agent_path(@agent) %> |
-<%= link_to 'Back', agents_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              agents_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_agent_path(@agent), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              agent_path(@agent),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

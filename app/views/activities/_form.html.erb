@@ -1,38 +1,32 @@
-<%= form_for(@activity, url: "/activities/#{@activity.id}") do |f| %>
-  <% if @activity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
-
-      <ul>
-      <% @activity.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @activity, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :subject, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :subject, :class => 'text_field' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :subject %><br />
-    <%= f.text_field :subject %>
   </div>
-  <div class="field">
-    <%= f.label :label %><br />
-    <%= f.text_field :label %>
+  <div class="control-group">
+    <%= f.label :label, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :label, :class => 'text_field' %>
+    </div>
   </div>
-  <% @activity.generated.each do |gen| %>
-    <div class="field">
-    <%= f.label "Generated" %><br />
-    <%= text_field_tag 'activities[]', gen %>
+  <div class="control-group">
+    <%= f.label :generated, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :generated, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :used, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :used, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <% @activity.used.each do |use| %>
-    <div class="field">
-    <%= f.label "Used" %><br />
-    <%= text_field_tag 'activities[]', use %>
-    </div>
-  <% end %>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                activities_path, :class => 'btn' %>
   </div>
 <% end %>
