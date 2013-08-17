@@ -1,12 +1,12 @@
 <%- model_class = Agent -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%=t '.title', :default => @agent.label %></h1>
 </div>
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:subject) %>:</strong></dt>
   <dd><%= @agent.subject %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:actedOnBehalfOf) %>:</strong></dt>
+  <dt><strong>Acted On Behalf Of</strong></dt>
   <dd><%= @agent.actedOnBehalfOf %></dd>
   <dt><strong><%= model_class.human_attribute_name(:label) %>:</strong></dt>
   <dd><%= @agent.label %></dd>

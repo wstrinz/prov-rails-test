@@ -1,11 +1,13 @@
 <%- model_class = Entity -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%=t '.title', :default => @entity.label %></h1>
 </div>
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:subject) %>:</strong></dt>
   <dd><%= @entity.subject %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:label) %>:</strong></dt>
+  <dd><%= @entity.label %></dd>
   <dt><strong><%= model_class.human_attribute_name(:wasGeneratedBy) %>:</strong></dt>
   <dd><%= @entity.wasGeneratedBy %></dd>
 </dl>

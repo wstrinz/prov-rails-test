@@ -17,28 +17,34 @@ class DataController < ApplicationController
     end
 
     types = type_query.execute(Spira.repositories[:default]).map{|t| t[:type]}
-    value = value_query.execute(Spira.repositories[:default]).map{|t| t[:value]}
+    value_results = value_query.execute(Spira.repositories[:default]).map{|t| t[:value]}
 
     if types.include? qb.dataSet
       @data = PubliSci::ORM::DataSet.for(id)
       # use classes from bio-publisci/datacube_model.rb
-    end
-
-    if value.first
-      @data = value.first.to_s
-    end
-
-    if output_format == 'csv'
-      writer = PubliSci::Writer::CSV.new
-      @data = writer.from_store(Spira.repositories[:default],'http://' + id)
-    elsif output_format == 'arff'
-      writer = PubliSci::Writer::ARFF.new
-      @data = writer.from_store(Spira.repositories[:default],'http://' + id)
+      if output_format == 'csv'
+        writer = PubliSci::Writer::CSV.new
+        @data = writer.from_store(Spira.repositories[:default],'http://' + id)
+      elsif output_format == 'arff'
+        writer = PubliSci::Writer::ARFF.new
+        @data = writer.from_store(Spira.repositories[:default],'http://' + id)
+      elsif output_format == 'ttl'
+        raise "Data Cube turtle output not implemented"
+      else
+        raise "No Data Cube Writer for #{output_format}, #{output_format.class}"
+      end
+    elsif value_results.first
+      @data = value_results.first.to_s
     elsif output_format == 'ttl'
       raise "Turtle output not implemented"
     else
-      raise "UnkownFormat #{output_format}, #{output_format.class}"
+      # this should probably return some value instead of raising an error
+      # so page can report that no data exists.
+      # Or say not found and just try dereferencing link?
+      raise "UnknownDataset #{output_format}, #{output_format.class}"
     end
+
+
     # maybe check if the entity is a named graph and do something about that
     #
     # otherwise maybe dereference url? Other representation methods?
@@ -50,6 +56,12 @@ class DataController < ApplicationController
   end
 
   def metadata
+    @model = PubliSci::Metadata::Model::Meta.for('http://'+ params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @model }
+    end
     # could probably make model classes for this
     #  ? Dynamically??
     # But should probably create one in the gem

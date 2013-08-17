@@ -9,9 +9,23 @@
   <dt><strong><%= model_class.human_attribute_name(:label) %>:</strong></dt>
   <dd><%= @activity.label %></dd>
   <dt><strong><%= model_class.human_attribute_name(:generated) %>:</strong></dt>
-  <dd><%= @activity.generated %></dd>
+  <dd>
+    <% if @activity.generated.size > 0 %>
+        <% @activity.generated.each do |generated| %>
+            <%= link_to (generated.as(Entity).label || generated.to_s), entity_path(generated.as(Entity)) %>
+            ,
+        <% end %>
+    <% end %>
+  </dd>
   <dt><strong><%= model_class.human_attribute_name(:used) %>:</strong></dt>
-  <dd><%= @activity.used %></dd>
+  <dd>
+    <% if @activity.used.size > 0 %>
+        <% @activity.used.each do |used| %>
+            <%= link_to (used.as(Entity).label || used.to_s), entity_path(used.as(Entity)) %>
+            ,
+        <% end %>
+    <% end %>
+  </dd>
 </dl>
 
 <div class="form-actions">
