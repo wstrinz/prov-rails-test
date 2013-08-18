@@ -8,6 +8,7 @@
       <th> Entity </th>
       <th><%= model_class.human_attribute_name(:label) %></th>
       <th><%= model_class.human_attribute_name(:wasGeneratedBy) %></th>
+      <th>Attributed To</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,6 +21,12 @@
         <% if entity.wasGeneratedBy %>
         <%= link_to (entity.wasGeneratedBy.as(Activity).label || entity.wasGeneratedBy), activity_path(entity.wasGeneratedBy.as(Activity)) %>
         <% end %>
+        </td>
+        <td>
+          <% entity.wasAttributedTo.each do |attrib| %>
+          <%= link_to (attrib.as(Agent).label || attrib), agent_path(attrib.as(Agent)) %>
+          ,
+          <% end %>
         </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

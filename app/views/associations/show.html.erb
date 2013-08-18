@@ -7,7 +7,13 @@
   <dt><strong><%= model_class.human_attribute_name(:label) %>:</strong></dt>
   <dd><%= @association.label %></dd>
   <dt><strong><%= model_class.human_attribute_name(:agent) %>:</strong></dt>
-  <dd><%= @association.agent %></dd>
+  <dd>
+    <% if @association.agent %>
+    <%= link_to (@association.agent.as(Agent).label || @association.agent), agent_path(@association.agent.as(Agent)) %>
+    ,
+    <% end %>
+
+  </dd>
   <dt><strong><%= model_class.human_attribute_name(:hadPlan) %>:</strong></dt>
   <dd><%= @association.hadPlan %></dd>
 </dl>

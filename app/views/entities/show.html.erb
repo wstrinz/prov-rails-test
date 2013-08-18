@@ -9,7 +9,19 @@
   <dt><strong><%= model_class.human_attribute_name(:label) %>:</strong></dt>
   <dd><%= @entity.label %></dd>
   <dt><strong><%= model_class.human_attribute_name(:wasGeneratedBy) %>:</strong></dt>
-  <dd><%= @entity.wasGeneratedBy %></dd>
+  <dd>
+    <% if @entity.wasGeneratedBy %>
+    <%= link_to (@entity.wasGeneratedBy.as(Activity).label || @entity.wasGeneratedBy), activity_path(@entity.wasGeneratedBy.as(Activity)) %>
+    ,
+    <% end %>
+  </dd>
+  <dt><strong><%= model_class.human_attribute_name(:was_attributed_to) %>:</strong></dt>
+  <dd>
+    <% @entity.wasAttributedTo.each do |attrib| %>
+    <%= link_to (attrib.as(Agent).label || attrib), agent_path(attrib.as(Agent)) %>
+    ,
+    <% end %>
+  </dd>
 </dl>
 
 <dl class="dl-horizontal">

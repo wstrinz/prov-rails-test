@@ -17,7 +17,12 @@
       <tr>
         <td><%= link_to association.id, association_path(association) %></td>
         <td><%= association.label %></td>
-        <td><%= association.agent %></td>
+        <td>
+          <% if association.agent %>
+          <%= link_to (association.agent.as(Agent).label || association.agent), agent_path(association.agent.as(Agent)) %>
+          ,
+          <% end %>
+        </td>
         <td><%= association.hadPlan %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
