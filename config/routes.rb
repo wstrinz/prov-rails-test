@@ -1,5 +1,9 @@
 require 'rdf_routes_helper'
 ProvRails::Application.routes.draw do
+  get "dsl/show"
+  get "dsl/edit"
+  post "dsl/update"
+
   resources :associations
 
 

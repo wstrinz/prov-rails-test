@@ -21,11 +21,13 @@ group :assets do
 end
 
 gem "therubyracer"
-gem "less-rails"
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'twitter-bootstrap-rails-cdn'
+gem "less-rails"
+
+gem 'coderay'
 
 gem 'rack-cors'
 gem 'spira'

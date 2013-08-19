@@ -7,8 +7,11 @@ module Spira
 end
 
 ev = PubliSci::DSL::Instance.new
-str = IO.read(File.dirname(__FILE__) + "/primer-full.prov")
-r = ev.instance_eval(str,File.dirname(__FILE__) + "/primer-full.prov")
+DSL_STRING = []
+DSL_STRING[0] = IO.read(File.dirname(__FILE__) + "/primer-full.prov")
+r = ev.instance_eval(DSL_STRING[0],File.dirname(__FILE__) + "/primer-full.prov")
+
+
 # include PubliSci::Prov::DSL
 # r = RDF::FourStore::Repository.new('http://localhost:8080/')
 # r = ev.instance_eval do

@@ -1,0 +1,12 @@
+<h1>Dsl#edit</h1>
+
+
+<div class="span8">
+<%= form_tag("/dsl/update", method: "post") do %>
+  <%= label_tag(:new_dsl, "") %>
+ <textarea class="field span 12" id="new_dsl" name="new_dsl" rows="24" value=><%= @dsl_text %></textarea>
+  <!-- <textarea class="field span 12" id="new_dsl" rows="5" placeholder="Enter a short synopsis"></textarea> -->
+    <%# text_area_tag(:new_dsl, @dsl_text, rows: 10, cols: 1252) %>
+  <%= submit_tag("Update") %>
+<% end %>
+ </div>
