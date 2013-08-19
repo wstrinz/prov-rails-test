@@ -3,4 +3,4 @@
 <br>
 <p> Data: </p>
 <br>
-<%= @data %>
+<%= @data.to_s.gsub("\n","<br>").html_safe%>

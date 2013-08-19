@@ -18,15 +18,16 @@ class DataController < ApplicationController
 
     types = type_query.execute(Spira.repositories[:default]).map{|t| t[:type]}
     value_results = value_query.execute(Spira.repositories[:default]).map{|t| t[:value]}
+    # raise "#{qb.dataSet.to_s},  #{types.first.to_s}"
 
-    if types.include? qb.dataSet
-      @data = PubliSci::ORM::DataSet.for(id)
+    if types.include? qb.DataSet
+      @data = PubliSci::ORM::DataSet.for('http://' + id)
       # use classes from bio-publisci/datacube_model.rb
       if output_format == 'csv'
-        writer = PubliSci::Writer::CSV.new
+        writer = PubliSci::Writers::CSV.new
         @data = writer.from_store(Spira.repositories[:default],'http://' + id)
       elsif output_format == 'arff'
-        writer = PubliSci::Writer::ARFF.new
+        writer = PubliSci::Writers::ARFF.new
         @data = writer.from_store(Spira.repositories[:default],'http://' + id)
       elsif output_format == 'ttl'
         raise "Data Cube turtle output not implemented"
@@ -41,7 +42,7 @@ class DataController < ApplicationController
       # this should probably return some value instead of raising an error
       # so page can report that no data exists.
       # Or say not found and just try dereferencing link?
-      raise "UnknownDataset #{output_format}, #{output_format.class}"
+      raise "UnknownDataset #{id}"
     end
 
 
