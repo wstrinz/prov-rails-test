@@ -1,6 +1,13 @@
 <h2>Repository#query</h1>
 <br>
   <p> Query: <%= @query %></p>
+  <%= form_tag("/repository/query", method: "get") do %>
+    <%= label_tag(:new_dsl, "") %>
+   <textarea class="field span 12" id="query" name="query" rows="10"><%= @query %></textarea>
+    <!-- <textarea class="field span 12" id="new_dsl" rows="5" placeholder="Enter a short synopsis"></textarea> -->
+      <%# text_area_tag(:new_dsl, @dsl_text, rows: 10, cols: 1252) %>
+    <%= submit_tag("Query") %>
+  <% end %>
 <br>
 <table>
   <% @response.first.keys.map do |k| %>

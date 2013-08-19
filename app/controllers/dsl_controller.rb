@@ -10,11 +10,13 @@ class DslController < ApplicationController
   end
 
   def edit
+    redirect_to dsl_show_path unless ENABLE_EDIT
     @dsl_text = DSL_STRING[0]
   end
 
   def update
     # TODO move this to main gem, under some kind of update function
+    redirect_to dsl_show_path unless ENABLE_EDIT
     new_str = params[:new_dsl]
     ev = PubliSci::DSL::Instance.new
     begin
