@@ -14,6 +14,7 @@ ProvRails::Application.routes.draw do
   get "data/metadata/*id", to: 'data#metadata'
 
   get "repository/query"
+  get "repository/dump", to: 'repository#dump'
   get "repository", to: 'repository#index'
 
   rdf_resources :entities
@@ -75,7 +76,7 @@ ProvRails::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'entities#index'
+  root :to => 'dsl#show'
 
   # See how all your routes lay out with "rake routes"
 

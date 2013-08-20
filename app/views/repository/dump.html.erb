@@ -1,0 +1,4 @@
+<h2><%= "NTriples for #{@repo}" %></h1>
+<br>
+<%=h(@statements).gsub("\n","<br>").html_safe %>
+<%= link_to 'dump', repository_dump_path %>

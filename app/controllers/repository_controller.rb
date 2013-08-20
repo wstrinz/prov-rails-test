@@ -17,4 +17,13 @@ class RepositoryController < ApplicationController
       # format.json { render json: @response }
     end
   end
+
+  def dump
+    @repo = Spira.repositories.first.last
+    @statements = @repo.each_statement.map(&:to_s).join("\n")
+    respond_to do |format|
+      format.html
+      format.json { render json: @statements }
+    end
+  end
 end
