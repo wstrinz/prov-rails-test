@@ -26,6 +26,15 @@
         <% end %>
     <% end %>
   </dd>
+  <dt><strong>Associated With:</strong></dt>
+  <dd>
+    <% if @activity.wasAssociatedWith.size > 0 %>
+        <% @activity.wasAssociatedWith.each do |wasAssociatedWith| %>
+            <%= link_to (wasAssociatedWith.as(Agent).label || wasAssociatedWith.to_s), agent_path(wasAssociatedWith.as(Agent)) %>
+            ,
+        <% end %>
+    <% end %>
+  </dd>
 </dl>
 
 <div class="form-actions">

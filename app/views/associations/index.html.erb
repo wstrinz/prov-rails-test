@@ -9,6 +9,7 @@
       <th><%= model_class.human_attribute_name(:label) %></th>
       <th><%= model_class.human_attribute_name(:agent) %></th>
       <th><%= model_class.human_attribute_name(:hadPlan) %></th>
+      <th><%= model_class.human_attribute_name(:activity) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -24,6 +25,11 @@
           <% end %>
         </td>
         <td><%= association.hadPlan %></td>
+        <td>
+          <% if association.activity.first %>
+          <%= link_to (association.activity.first.label || association.activity.first), activity_path(association.activity.first)  %>
+          <% end %>
+        </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_association_path(association), :class => 'btn btn-mini' %>

@@ -1,2 +1,3 @@
 <h1>Dsl</h1>
-<p><%=  CodeRay.scan(@dsl_text, :ruby).div(:line_numbers => :table).html_safe %></p>
+<p><%=  CodeRay.scan(@dsl_text, :ruby).div.html_safe %></p>
+<p><%=  link_to 'Edit', dsl_edit_path %></p>

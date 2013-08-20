@@ -9,6 +9,7 @@
       <th><%= model_class.human_attribute_name(:label) %></th>
       <th><%= model_class.human_attribute_name(:generated) %></th>
       <th><%= model_class.human_attribute_name(:used) %></th>
+      <th>Associated With</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -29,6 +30,14 @@
             <% if activity.used.size > 0 %>
                 <% activity.used.each do |used| %>
                     <%= link_to (used.as(Entity).label || used.to_s), entity_path(used.as(Entity)) %>
+                    ,
+                <% end %>
+            <% end %>
+        </td>
+        <td>
+            <% if activity.wasAssociatedWith.size > 0 %>
+                <% activity.wasAssociatedWith.each do |wasAssociatedWith| %>
+                    <%= link_to (wasAssociatedWith.as(Agent).label || wasAssociatedWith.to_s), entity_path(wasAssociatedWith.as(Agent)) %>
                     ,
                 <% end %>
             <% end %>

@@ -7,13 +7,13 @@
   <dt><strong><%= model_class.human_attribute_name(:subject) %>:</strong></dt>
   <dd><%= @agent.subject %></dd>
   <dt><strong>Acted On Behalf Of</strong></dt>
-  <dd><%= @agent.actedOnBehalfOf %></dd>
+  <dd class="clearfix"><%= @agent.actedOnBehalfOf %></dd>
   <dt><strong><%= model_class.human_attribute_name(:label) %>:</strong></dt>
-  <dd><%= @agent.label %></dd>
+  <dd class="clearfix"><%= @agent.label %></dd>
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @agent.name %></dd>
+  <dd class="clearfix"><%= @agent.name %></dd>
   <dt><strong>Activities</strong></dt>
-  <dd>
+  <dd class="clearfix">
     <% @agent.activities.each do |act| %>
     <%= link_to (act.label || act.subject), activity_path(act) %>
     ,
