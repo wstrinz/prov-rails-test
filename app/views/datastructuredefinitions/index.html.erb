@@ -1,6 +1,6 @@
 <%- model_class = Datastructuredefinition -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Data Structures</h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -14,7 +14,13 @@
     <% @datastructuredefinitions.each do |datastructuredefinition| %>
       <tr>
         <td><%= link_to datastructuredefinition.id, datastructuredefinition_path(datastructuredefinition) %></td>
-        <td><%= datastructuredefinition.component %></td>
+        <td>
+          <% datastructuredefinition.component.each do |component| %>
+          <%= component.to_s %>
+          <%# link_to (attrib.as(Agent).label || attrib), agent_path(attrib.as(Agent)) %>
+          ,
+          <% end %>
+        </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_datastructuredefinition_path(datastructuredefinition), :class => 'btn btn-mini' %>

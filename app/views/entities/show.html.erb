@@ -24,11 +24,16 @@
   </dd>
 </dl>
 
+    <% if @entity.has_data? %>
 <dl class="dl-horizontal">
-  <dt><b>Export Data</b></dt>
-  <dd><%= link_to 'csv', controller: "data", action: "dataset", output_format: 'csv', id: @entity %></dd>
-  <dd><%= link_to 'arff', controller: "data", action: "dataset", output_format: 'arff', id: @entity %></dd>
+  <dt><b>Dataset</b></dt>
+  <dd>
+
+    <%= link_to 'dataset', @entity.subject.as(Dataset) %>
+
+  </dd>
 </dl>
+    <% end %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

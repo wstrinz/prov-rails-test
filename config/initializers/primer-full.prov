@@ -13,6 +13,7 @@ provenance do
   # Entities
   ###
 
+  entity :bacon_data, subject: 'http://www.rqtl.org/ns/dataset/bacon/dataset-bacon'
   entity :dataSet1
   entity :regionList
   entity :composition1
