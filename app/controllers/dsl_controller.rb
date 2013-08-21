@@ -21,8 +21,8 @@ class DslController < ApplicationController
     ev = PubliSci::DSL::Instance.new
     begin
       r = ev.instance_eval(new_str,File.dirname(__FILE__) + "/primer-full.prov")
-    rescue
-      raise "Caught error in eval"
+    rescue Exception => e
+      raise "Caught error in eval #{e} #{e.backtrace}"
     end
 
     Spira.add_repository :default, r

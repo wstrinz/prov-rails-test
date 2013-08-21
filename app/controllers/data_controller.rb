@@ -8,17 +8,17 @@ class DataController < ApplicationController
     qb = RDF::Vocabulary.new('http://purl.org/linked-data/cube#')
     sio = RDF::Vocabulary.new('http://semanticscience.org/resource/')
 
-    type_query = RDF::Query.new do
-      pattern [RDF::URI('http://' + id), RDF.type, :type]
-    end
+    types = Entity.for(id).all_types
+    # type_query = RDF::Query.new do
+    #   pattern [RDF::URI('http://' + id), RDF.type, :type]
+    # end
 
     value_query = RDF::Query.new do
       pattern [RDF::URI('http://' + id), sio.hasValue, :value]
     end
 
-    types = type_query.execute(Spira.repositories[:default]).map{|t| t[:type]}
+    # types = type_query.execute(Spira.repositories[:default]).map{|t| t[:type]}
     value_results = value_query.execute(Spira.repositories[:default]).map{|t| t[:value]}
-    # raise "#{qb.dataSet.to_s},  #{types.first.to_s}"
 
     if types.include? qb.DataSet
       @data = PubliSci::ORM::DataSet.for('http://' + id)
