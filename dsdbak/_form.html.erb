@@ -1,0 +1,21 @@
+<%= form_for(@datastructuredefinition) do |f| %>
+  <% if @datastructuredefinition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@datastructuredefinition.errors.count, "error") %> prohibited this datastructuredefinition from being saved:</h2>
+
+      <ul>
+      <% @datastructuredefinition.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :component %><br />
+    <%= f.text_field :component %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

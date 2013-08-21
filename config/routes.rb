@@ -21,6 +21,8 @@ ProvRails::Application.routes.draw do
   rdf_resources :activities
   rdf_resources :agents
   rdf_resources :associations
+  rdf_resources :datasets
+  rdf_resources :datastructuredefinitions
 
   # get 'entities/*id', to: 'entities#show' #, id: %r{http://.+/.+}
   # get 'activities/*id', to: 'activities#show' #, id: %r{http://.+/.+}

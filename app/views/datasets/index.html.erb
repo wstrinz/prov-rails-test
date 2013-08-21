@@ -1,0 +1,36 @@
+<%- model_class = Dataset -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:subject) %></th>
+      <th><%= model_class.human_attribute_name(:label) %></th>
+      <th><%= model_class.human_attribute_name(:structure) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @datasets.each do |dataset| %>
+      <tr>
+        <td><%= link_to dataset.id, dataset_path(dataset) %></td>
+        <td><%= dataset.label %></td>
+        <td><%= link_to (dataset.structure.as(Datastructuredefinition).label || dataset.structure), dataset.structure.as(Datastructuredefinition) %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_dataset_path(dataset), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      dataset_path(dataset),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_dataset_path,
+            :class => 'btn btn-primary' %>

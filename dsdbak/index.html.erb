@@ -1,0 +1,23 @@
+<h1>Listing datastructuredefinitions</h1>
+
+<table>
+  <tr>
+    <th>Component</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @datastructuredefinitions.each do |datastructuredefinition| %>
+  <tr>
+    <td><%= datastructuredefinition.component %></td>
+    <td><%= link_to 'Show', datastructuredefinition %></td>
+    <td><%= link_to 'Edit', edit_datastructuredefinition_path(datastructuredefinition) %></td>
+    <td><%= link_to 'Destroy', datastructuredefinition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Datastructuredefinition', new_datastructuredefinition_path %>

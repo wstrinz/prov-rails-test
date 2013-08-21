@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816183312) do
+ActiveRecord::Schema.define(:version => 20130821174500) do
 
   create_table "activities", :force => true do |t|
     t.string   "subject"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(:version => 20130816183312) do
     t.string   "label"
     t.string   "agent"
     t.string   "hadPlan"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "datasets", :force => true do |t|
+    t.string   "label"
+    t.string   "structure"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "datastructuredefinitions", :force => true do |t|
+    t.string   "component"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
