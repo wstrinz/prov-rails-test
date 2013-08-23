@@ -24,16 +24,16 @@
   </dd>
 </dl>
 
-    <% if @entity.has_data? %>
-<dl class="dl-horizontal">
-  <dt><b>Dataset</b></dt>
-  <dd>
+<% if @entity.has_data? %>
+  <dl class="dl-horizontal">
+    <dt><b>Dataset</b></dt>
+    <dd>
 
-    <%= link_to 'dataset', @entity.subject.as(Dataset) %>
+      <%= link_to 'dataset', @entity.subject.as(Dataset) %>
 
-  </dd>
-</dl>
-    <% end %>
+    </dd>
+  </dl>
+<% end %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

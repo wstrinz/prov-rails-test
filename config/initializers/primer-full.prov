@@ -1,5 +1,7 @@
 data do
   object "https://raw.github.com/wstrinz/bioruby-publisci/master/spec/csv/bacon.csv"
+
+  object "https://raw.github.com/wstrinz/bioruby-publisci/master/resources/weather.numeric.arff"
 end
 
 provenance do

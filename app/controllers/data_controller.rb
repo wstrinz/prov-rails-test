@@ -22,13 +22,16 @@ class DataController < ApplicationController
 
     if types.include? qb.DataSet
       @data = PubliSci::ORM::DataSet.for('http://' + id)
+      @name = @data.label
       # use classes from bio-publisci/datacube_model.rb
       if output_format == 'csv'
         writer = PubliSci::Writers::CSV.new
         @data = writer.from_store(Spira.repositories[:default],'http://' + id)
+
       elsif output_format == 'arff'
         writer = PubliSci::Writers::ARFF.new
         @data = writer.from_store(Spira.repositories[:default],'http://' + id)
+
       elsif output_format == 'ttl'
         raise "Data Cube turtle output not implemented"
       else
@@ -51,7 +54,7 @@ class DataController < ApplicationController
     # otherwise maybe dereference url? Other representation methods?
 
     respond_to do |format|
-      format.html
+      format.html { send_data(@data, filename: "#{@name}.#{output_format}")}
       format.json { render json: @data }
     end
   end
