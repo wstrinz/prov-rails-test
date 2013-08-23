@@ -20,7 +20,7 @@ class RepositoryController < ApplicationController
 
   def dump
     @repo = Spira.repositories.first.last
-    @statements = @repo.each_statement.map(&:to_s).join("\n")
+    @statements = @repo.to_ttl
     respond_to do |format|
       format.html
       format.json { render json: @statements }
