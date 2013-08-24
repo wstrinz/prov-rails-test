@@ -32,6 +32,7 @@ gem 'coderay'
 gem 'rack-cors'
 gem 'spira'
 gem 'bio-publisci'
+# gem 'bio-publisci', git: 'https://github.com/wstrinz/bioruby-publisci.git'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

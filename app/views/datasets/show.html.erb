@@ -14,6 +14,7 @@
   <dt><b>Export Data</b></dt>
   <dd><%= link_to 'csv', controller: "data", action: "dataset", output_format: 'csv', id: @dataset %></dd>
   <dd><%= link_to 'arff', controller: "data", action: "dataset", output_format: 'arff', id: @dataset %></dd>
+  <dd><%= link_to 'json', controller: "data", action: "dataset", output_format: 'json', id: @dataset %></dd>
 </dl>
 
 <div class="form-actions">

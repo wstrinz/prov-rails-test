@@ -32,6 +32,10 @@ class DataController < ApplicationController
         writer = PubliSci::Writers::ARFF.new
         @data = writer.from_store(Spira.repositories[:default],'http://' + id)
 
+      elsif output_format == 'json'
+        writer = PubliSci::Writers::JSON.new
+        @data = writer.from_store(Spira.repositories[:default],'http://' + id)
+
       elsif output_format == 'ttl'
         raise "Data Cube turtle output not implemented"
       else
